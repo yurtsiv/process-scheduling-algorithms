@@ -44,12 +44,6 @@ public class Scheduler {
         readyProcesses.removeIf(Process::getIsFinished);
     }
 
-    private void updateWaitingTimes() {
-        for (int i = 1; i < readyProcesses.size(); i++) {
-            readyProcesses.get(i).incrementWaitingTime();
-        }
-    }
-
     private boolean areAllProcessesFinished() {
         for (Process proc : allProcesses) {
             if (!proc.getIsFinished()) {
@@ -70,10 +64,11 @@ public class Scheduler {
 
         while(!areAllProcessesFinished()) {
             updateQueue();
+
             if (readyProcesses.size() != 0) {
                 scheduleAlgorithm.tick(currentTime, readyProcesses);
             }
-            updateWaitingTimes();
+
             currentTime++;
         }
 

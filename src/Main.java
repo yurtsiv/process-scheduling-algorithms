@@ -1,8 +1,5 @@
 import processes.Process;
-import scheduler.FCFS;
-import scheduler.SJFNonPreemptive;
-import scheduler.SJFPreemptive;
-import scheduler.Scheduler;
+import scheduler.*;
 
 import java.util.ArrayList;
 
@@ -11,8 +8,8 @@ public class Main {
         numberOfSeries = 1,
         seriesLength = 5,
         maxRunningTime = 100,
-        maxStartTime = 30;
-
+        maxStartTime = 30,
+        rotQuantum = 5;
 
     public static void main(String[] args) {
         for (int i = 0; i < seriesLength; i++) {
@@ -25,6 +22,7 @@ public class Main {
             ArrayList<Process> fcfsRes = scheduler.run(procSeries, new FCFS());
             ArrayList<Process> sjfRes = scheduler.run(procSeries, new SJFNonPreemptive());
             ArrayList<Process> sjfPreemptiveRes = scheduler.run(procSeries, new SJFPreemptive());
+            ArrayList<Process> rotRes = scheduler.run(procSeries, new ROT(rotQuantum));
             System.out.println();
         }
     }

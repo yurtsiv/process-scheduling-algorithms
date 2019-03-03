@@ -7,6 +7,12 @@ import java.util.ArrayList;
 public class SJF {
     private int prevQueueLength = 0;
 
+    private void updateWaitingTimes(ArrayList<Process> readyProcesses) {
+        for (int i = 1; i < readyProcesses.size(); i++) {
+            readyProcesses.get(i).incrementWaitingTime();
+        }
+    }
+
     private void sortQueue(ArrayList<Process> readyProcesses, ProcessComparator procComp) {
         readyProcesses.sort(procComp::compare);
     }
@@ -21,5 +27,6 @@ public class SJF {
         Process currentRunnig = readyProcesses.get(0);
         currentRunnig.setIsRunning(true);
         currentRunnig.incrementProgress();
+        updateWaitingTimes(readyProcesses);
     }
 }
