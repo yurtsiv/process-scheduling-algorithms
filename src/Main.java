@@ -1,6 +1,7 @@
 import processes.Process;
 import scheduler.FCFS;
-import scheduler.SJF;
+import scheduler.SJFNonPreemptive;
+import scheduler.SJFPreemptive;
 import scheduler.Scheduler;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class Main {
             Scheduler scheduler = new Scheduler();
 
             ArrayList<Process> fcfsRes = scheduler.run(procSeries, new FCFS());
-            ArrayList<Process> sjfRes = scheduler.run(procSeries, new SJF());
+            ArrayList<Process> sjfRes = scheduler.run(procSeries, new SJFNonPreemptive());
+            ArrayList<Process> sjfPreemptiveRes = scheduler.run(procSeries, new SJFPreemptive());
             System.out.println();
         }
     }
