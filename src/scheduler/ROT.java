@@ -27,6 +27,10 @@ public class ROT implements ScheduleAlgorithm {
 
     @Override
     public void tick(int currentTime, ArrayList<Process> readyProcesses) {
+        if (currentProcessIndex >= readyProcesses.size() - 1) {
+            currentProcessIndex = 0;
+        }
+
         if (quantumProgress == quantum) {
             quantumProgress = 0;
             if (currentProcessIndex >= readyProcesses.size() - 1) {
@@ -36,9 +40,11 @@ public class ROT implements ScheduleAlgorithm {
             }
         }
 
-        Process currentProcess = readyProcesses.get(currentProcessIndex);
-        currentProcess.incrementProgress();
-        updateWaitingTimes(readyProcesses);
-        quantumProgress++;
+        if (readyProcesses.size() != 0) {
+            Process currentProcess = readyProcesses.get(currentProcessIndex);
+            currentProcess.incrementProgress();
+            updateWaitingTimes(readyProcesses);
+            quantumProgress++;
+        }
     }
 }

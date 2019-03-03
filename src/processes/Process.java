@@ -18,6 +18,10 @@ public class Process implements Cloneable {
         }
     }
 
+    public int getId() {
+        return id;
+    }
+
     public int getWaitingTime() {
         return waitingTime;
     }
