@@ -11,14 +11,7 @@ public class Scheduler {
             readyProcesses = new ArrayList<>(),
             notReadyProcesses = new ArrayList<>();
 
-    private ScheduleAlgorithm scheduleAlgorithm;
-
-    public Scheduler(ArrayList<Process> allProcesses, ScheduleAlgorithm scheduleAlgorithm) {
-        this.allProcesses = Scheduler.cloneProcesses(allProcesses);
-        this.scheduleAlgorithm = scheduleAlgorithm;
-    }
-
-    private static ArrayList<Process> cloneProcesses(ArrayList<Process> processes) {
+    private ArrayList<Process> cloneProcesses(ArrayList<Process> processes) {
         ArrayList<Process> res = new ArrayList<>();
         try {
             for (Process proc : processes) {
@@ -30,7 +23,6 @@ public class Scheduler {
             return null;
         }
     }
-
 
     private void splitProcesses() {
         for (Process proc : allProcesses) {
@@ -68,12 +60,19 @@ public class Scheduler {
         return true;
     }
 
-    public ArrayList<Process> run() {
+    public ArrayList<Process> run(ArrayList<Process> processes, ScheduleAlgorithm scheduleAlgorithm) {
+        currentTime = 0;
+        allProcesses = cloneProcesses(processes);
+        readyProcesses = new ArrayList<>();
+        notReadyProcesses = new ArrayList<>();
+
         splitProcesses();
 
         while(!areAllProcessesFinished()) {
             updateQueue();
-            scheduleAlgorithm.tick(currentTime, readyProcesses);
+            if (readyProcesses.size() != 0) {
+                scheduleAlgorithm.tick(currentTime, readyProcesses);
+            }
             updateWaitingTimes();
             currentTime++;
         }

@@ -18,6 +18,10 @@ public class Process implements Cloneable {
         }
     }
 
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
     public int getStartTime() {
         return startTime;
     }
@@ -26,20 +30,8 @@ public class Process implements Cloneable {
         waitingTime++;
     }
 
-    private void setRunningProgress(int progress) {
-        runningProgress = progress;
-    }
-
-    private void setWaitingTime(int time) {
-        waitingTime = time;
-    }
-
     public boolean getIsFinished() {
         return isFinished;
-    }
-
-    public void setIsFinished(boolean isFinished) {
-        this.isFinished = isFinished;
     }
 
     public boolean getIsRunning() {
@@ -48,6 +40,10 @@ public class Process implements Cloneable {
 
     public void setIsRunning(boolean isRunning) {
         this.isRunning = isRunning;
+    }
+
+    public int getEstimatedRunningTime() {
+        return estimatedRunningTime;
     }
 
     public Process clone() throws CloneNotSupportedException {
