@@ -18,6 +18,10 @@ public class Process {
         }
     }
 
+    public int getStartTime() {
+        return startTime;
+    }
+
     public void incrementWaitingTime() {
         waitingTime++;
     }
