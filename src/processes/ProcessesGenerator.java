@@ -13,11 +13,11 @@ public class ProcessesGenerator {
         return rand.nextInt((max - min) + 1) + min;
     }
 
-    public static ArrayList<Process> getSeries(int processesNumber, int maxRunningTime, int maxStartTime) {
+    public static ArrayList<Process> getSeries(int seriesLenght, int maxRunningTime, int maxStartTime) {
         ArrayList<Process> res = new ArrayList<>();
 
         int zeroWaitingTimeProcs = ProcessesGenerator.randomInt(5, 20);
-        for (int i = 0; i < processesNumber; i++) {
+        for (int i = 0; i < seriesLenght; i++) {
             int runningTime = ProcessesGenerator.randomInt(1, maxRunningTime);
             int startTime = i <= zeroWaitingTimeProcs ? 0 : ProcessesGenerator.randomInt(0, maxStartTime);
             res.add(new Process(i, runningTime, startTime));

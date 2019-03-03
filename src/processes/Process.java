@@ -1,6 +1,6 @@
 package processes;
 
-public class Process {
+public class Process implements Cloneable {
     private int id, estimatedRunningTime, startTime, runningProgress = 0, waitingTime = 0;
     private boolean isFinished = false, isRunning = false;
 

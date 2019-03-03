@@ -3,8 +3,6 @@ package scheduler;
 import processes.Process;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 public class Scheduler {
     private int currentTime;
@@ -54,6 +52,12 @@ public class Scheduler {
         readyProcesses.removeIf(Process::getIsFinished);
     }
 
+    private void updateWaitingTimes() {
+        for (int i = 1; i < readyProcesses.size(); i++) {
+            readyProcesses.get(i).incrementWaitingTime();
+        }
+    }
+
     private boolean areAllProcessesFinished() {
         for (Process proc : allProcesses) {
             if (!proc.getIsFinished()) {
@@ -70,6 +74,7 @@ public class Scheduler {
         while(!areAllProcessesFinished()) {
             updateQueue();
             scheduleAlgorithm.tick(currentTime, readyProcesses);
+            updateWaitingTimes();
             currentTime++;
         }
 
