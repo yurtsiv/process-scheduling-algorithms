@@ -53,4 +53,8 @@ public class Process implements Cloneable {
     public Process clone() throws CloneNotSupportedException {
         return (Process) super.clone();
     }
+
+    public int getRemainingRunningTime() {
+        return estimatedRunningTime - runningProgress;
+    }
 }

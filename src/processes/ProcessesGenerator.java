@@ -16,7 +16,7 @@ public class ProcessesGenerator {
     public static ArrayList<Process> getSeries(int seriesLenght, int maxRunningTime, int maxStartTime) {
         ArrayList<Process> res = new ArrayList<>();
 
-        int zeroWaitingTimeProcs = ProcessesGenerator.randomInt(5, 20);
+        int zeroWaitingTimeProcs = ProcessesGenerator.randomInt(0, seriesLenght / 3);
         for (int i = 0; i < seriesLenght; i++) {
             int runningTime = ProcessesGenerator.randomInt(1, maxRunningTime);
             int startTime = i <= zeroWaitingTimeProcs ? 0 : ProcessesGenerator.randomInt(0, maxStartTime);

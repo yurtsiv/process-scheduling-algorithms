@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Main {
     private static int
-        numberOfSeries = 50,
-        seriesLength = 100,
-        maxRunningTime = 100,
-        maxStartTime = 30,
+        numberOfSeries = 100,
+        seriesLength = 50,
+        maxRunningTime = 1000,
+        maxStartTime = 50,
         rotQuantum = 10;
 
     private static void printProcSeries(ArrayList<Process> procSeries) {

@@ -10,7 +10,8 @@ public class SJFPreemptive extends SJF implements ScheduleAlgorithm {
         super.tick(
             currentTime,
             readyProcesses,
-            (proc1, proc2) -> proc1.getEstimatedRunningTime() - proc2.getEstimatedRunningTime()
+            (proc1, proc2) ->
+               proc1.getRemainingRunningTime() - proc2.getRemainingRunningTime()
         );
     }
 }
