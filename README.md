@@ -4,4 +4,4 @@ A simulator for basic process scheduling algorithms ([FCFS](https://en.wikipedia
 
 Outputs average process waiting time.
 
-Simulation runs on predefined number of series of randomly generated (but configurable to some extent) processes.
+Simulation runs for predefined number of series of randomly generated (but configurable to some extent) processes.
